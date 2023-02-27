@@ -1,0 +1,5 @@
+<h1 class="todo__heading">Todo widget</h1>
+
+<app-todo-create-form-ui (create)="onCreate($event)"></app-todo-create-form-ui>
+<app-todo-list-ui [todoList]="todoList$ | async" (deleteTodo)="onDelete($event)" (toggleTodo)="onToggle($event)"
+  (editTodo)="onEdit($event)"></app-todo-list-ui>

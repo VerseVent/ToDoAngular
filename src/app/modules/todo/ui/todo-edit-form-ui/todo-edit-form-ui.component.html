@@ -1,0 +1,12 @@
+<form action="#" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Todo title</mat-label>
+    <input class="todo__input" matInput placeholder="Ex. Todo" type="text" name="name" [(ngModel)]="name">
+  </mat-form-field>
+  <br />
+  <button class="todo__btn" mat-button color="primary" extended mat-raised-button type="submit"
+    [disabled]="!name">Edit</button>
+
+  <button class="todo__btn" mat-raised-button color="primary" (click)="onCancel()" type="button">Cancel</button>
+
+</form>

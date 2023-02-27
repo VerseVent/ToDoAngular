@@ -1,0 +1,8 @@
+<!-- <mat-list-option class="item-option" [value]="todo.id" (click)="onToggle()">
+  {{todo.name}}
+</mat-list-option> -->
+<mat-checkbox class="example-margin" [checked]="todo.completed" (click)="onToggle()">
+  {{todo.name}}
+</mat-checkbox><br>
+<button mat-raised-button color="warn" class="item-delete-btn" (click)="onDelete()">Delete</button>
+<button mat-raised-button color="accent" class="item-delete-btn" (click)="onEdit()">Edit</button>
