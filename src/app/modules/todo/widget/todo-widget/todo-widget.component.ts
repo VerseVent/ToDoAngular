@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { TodoState } from '../../store/todo/todo.reducer';
 import {
@@ -10,16 +10,21 @@ import {
 import { Observable } from 'rxjs';
 import { todoListSelector } from '../../store/todo/todo.selectors';
 import { Todo } from '../../models/todo';
+import { TodoSyncLocalStorage } from '../../service/todo-sync-localstorage';
 
 @Component({
   selector: 'app-todo-widget',
   templateUrl: './todo-widget.component.html',
   styleUrls: ['./todo-widget.component.scss'],
 })
-export class TodoWidgetComponent {
+export class TodoWidgetComponent implements OnInit{
   todoList$: Observable<Todo[]> = this.store$.pipe(select(todoListSelector));
 
-  constructor(private store$: Store<TodoState>) {}
+  constructor(private store$: Store<TodoState>, private todoSyncStorage:TodoSyncLocalStorage) {}
+
+  ngOnInit(): void {
+    this.todoSyncStorage.init();
+  }
 
   onCreate(name: string) {
     this.store$.dispatch(new TodoCreateAction({ name }));
